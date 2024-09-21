@@ -1,11 +1,5 @@
 import {
-  END_TILE_STYLE,
   MAX_ROWS,
-  PATH_TILE_STYLE,
-  START_TILE_STYLE,
-  TILE_STYLE,
-  TRAVERSED_TILE_STYLE,
-  WALL_TILE_STYLE,
 } from "../_utils/constants";
 interface MouseFunction {
   (row: Number, col: Number): void;

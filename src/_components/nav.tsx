@@ -11,7 +11,7 @@ import {
 import { resetGrid } from "../_utils/resetgrid";
 import { ALGORITM_TYPES, MAZE_TYPE, SpeedType } from "../_utils/types";
 import { Select } from "./select";
-import { usespeed } from "../_hooks/Speed_Hooks";
+import { UseSpeed } from "../_hooks/Speed_Hooks";
 import { runMazeAlgorithm } from "../_utils/runmazealgoritm";
 import { PlayButton } from "./Playbutton";
 import { runPathfindingAlgorithm } from "../_utils/runpathfindingalgoritm";
@@ -22,7 +22,7 @@ export function Nav({
 }: {
   isvisualizedref: MutableRefObject<boolean>;
 }) {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const {
     maze,
     setmaze,
@@ -34,7 +34,7 @@ export function Nav({
     setalgoritm,
   } = usePathFinding();
   const { startTile, endTile } = useTile();
-  const { speed, setspeed } = usespeed();
+  const { speed, setspeed } = UseSpeed();
 
   const handleGenerateMaze = (maze: MAZE_TYPE) => {
     if (maze === "NONE") {
@@ -81,7 +81,9 @@ export function Nav({
       setisgraphvisiualized(true);
       setIsDisabled(false);
       isvisualizedref.current = false;
-    }, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
+    }, 
+    SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + 
+    EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
   };
 
   return (
@@ -96,7 +98,7 @@ export function Nav({
             value={maze}
             options={MAZES}
             isDisabled={isDisabled}
-            onChange={(e:any) => {
+            onChange={(e: any) => {
               handleGenerateMaze(e.target.value as MAZE_TYPE);
             }}
           />
@@ -105,7 +107,7 @@ export function Nav({
             value={algorithm}
             isDisabled={isDisabled}
             options={PATHFINDING_ALGORITHMS}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setalgoritm(e.target.value as ALGORITM_TYPES);
             }}
           />
