@@ -1,6 +1,3 @@
-import {
-  MAX_ROWS,
-} from "../_utils/constants";
 interface MouseFunction {
   (row: number, col: number): void;
 }
