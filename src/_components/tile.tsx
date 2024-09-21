@@ -2,7 +2,7 @@ import {
   MAX_ROWS,
 } from "../_utils/constants";
 interface MouseFunction {
-  (row: Number, col: Number): void;
+  (row: number, col: number): void;
 }
 
 export function Tile({
@@ -17,13 +17,13 @@ export function Tile({
   handleMouseUp,
   handleMouseEnter,
 }: {
-  row: Number;
-  col: Number;
-  isStart: Boolean;
-  isEnd: Boolean;
-  isTraversed: Boolean;
-  isWall: Boolean;
-  isPath: Boolean;
+  row: number;
+  col: number;
+  isStart: boolean;
+  isEnd: boolean;
+  isTraversed: boolean;
+  isWall: boolean;
+  isPath: boolean;
   handleMouseDown: MouseFunction;
   handleMouseUp: MouseFunction;
   handleMouseEnter: MouseFunction;

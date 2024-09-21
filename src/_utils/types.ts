@@ -3,15 +3,15 @@ export type ALGORITM_TYPES= "DIJKSTRA" | "A_STAR" | "BFS" | "DFS" ;
 export type MAZE_TYPE= "NONE" | "BINARY_TREE" | "RECURSIVE_DIVISION"
 
 export type Tiletype={
-    row:Number 
-    col:Number
-    isEnd:Boolean
-    isStart:Boolean
-    isWall:Boolean
-    isTraversed:Boolean
+    row:number 
+    col:number
+    isEnd:boolean
+    isStart:boolean
+    isWall:boolean
+    isTraversed:boolean
     parent:Tiletype | null
-    isPath:Boolean
-    distance:Number
+    isPath:boolean
+    distance:number
 }
 
 export type SpeedType= 2 | 1 | 0.5

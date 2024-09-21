@@ -58,13 +58,13 @@ export function Grid({isvisualizedref}:{isvisualizedref:MutableRefObject<boolean
             return (
               <Tile
                 key={tileIndex}
-                row={tile.row}
-                col={tile.col}
-                isEnd={isEnd}
-                isStart={isStart}
-                isPath={isPath}
-                isTraversed={isTraversed}
-                isWall={isWall}
+                row={tile.row as number }
+                col={tile.col as number}
+                isEnd={isEnd as boolean}
+                isStart={isStart as boolean}
+                isPath={isPath as boolean}
+                isTraversed={isTraversed as boolean}
+                isWall={isWall as boolean} 
                 handleMouseDown={() => handleMouseDown(row as number, col as number)}
                 handleMouseUp={() => handleMouseUp(row as number, col as number)}
                 handleMouseEnter={() => handleMouseEnter(row as number, col as number)}
