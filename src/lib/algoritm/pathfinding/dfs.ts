@@ -2,9 +2,9 @@ import { getUntraversedNeighbors } from "../../../_utils/getUntraversedNeighbors
 import { checkStack, isEqual } from "../../../_utils/helpers";
 import { Grid_Types, Tiletype } from "../../../_utils/types";
 
-export const dfs = (grid: GridType, start_Tiles: Tiletype, end_Tiles: Tiletype) => {
+export const dfs = (grid: Grid_Types, start_Tiles: Tiletype, end_Tiles: Tiletype) => {
   const traversedTiles = []; // Initialize an array to store traversed tiles
-  const base = grid[startTile.row][startTile.col]; // Get the start tile from the grid
+  const base = grid[start_Tiles.row as number][start_Tiles.col as number]; // Get the start tile from the grid
   base.distance = 0; // Set the distance of the start tile to 0
   base.isTraversed = true; // Mark the start tile as traversed
   const untraversedTiles = [base]; // Initialize the stack with the start tile
@@ -18,13 +18,13 @@ export const dfs = (grid: GridType, start_Tiles: Tiletype, end_Tiles: Tiletype) 
       if (currentTile.distance === Infinity) break; // Break if the tile's distance is infinity
       currentTile.isTraversed = true; // Mark the tile as traversed
       traversedTiles.push(currentTile); // Add the tile to the traversed tiles array
-      if (isEqual(currentTile, endTile)) break; // Break if the tile is the end tile
+      if (isEqual(currentTile, end_Tiles)) break; // Break if the tile is the end tile
       const neighbors = getUntraversedNeighbors(grid, currentTile); // Get untraversed neighbors of the tile
       for (let i = 0; i < neighbors.length; i += 1) {
         // Iterate through each neighbor
         if (!checkStack(neighbors[i], untraversedTiles)) {
           // Check if the neighbor is not in the stack
-          neighbors[i].distance = currentTile.distance + 1; // Update the neighbor's distance
+          neighbors[i].distance = currentTile.distance as number + 1; // Update the neighbor's distance
           neighbors[i].parent = currentTile; // Set the neighbor's parent to the current tile
           untraversedTiles.push(neighbors[i]); // Add the neighbor to the stack
         }
@@ -32,7 +32,7 @@ export const dfs = (grid: GridType, start_Tiles: Tiletype, end_Tiles: Tiletype) 
     }
   }
   const path = []; // Initialize an array to store the path
-  let current = grid[endTile.row][endTile.col]; // Start from the end tile
+  let current = grid[end_Tiles.row as number][end_Tiles.col as number]; // Start from the end tile
   while (current !== null) {
     // Backtrack until the start tile
     current.isPath = true; // Mark the tile as part of the path

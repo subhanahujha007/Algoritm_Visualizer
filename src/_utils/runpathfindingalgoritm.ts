@@ -1,7 +1,7 @@
-import { aStar } from "../lib/algorithms/pathfinding/aStar";
-import { bfs } from "../lib/algorithms/pathfinding/bfs.js";
-import { dfs } from "../lib/algorithms/pathfinding/dfs";
-import { dijkstra } from "../lib/algorithms/pathfinding/dijkstra";
+import { aStar } from "../lib/algoritm/pathfinding/aStar";
+import { bfs } from "@/lib/algoritm/pathfinding/bfs";
+import { dfs } from "../lib/algoritm/pathfinding/dfs";
+import { dijkstra } from "../lib/algoritm/pathfinding/dijkstra";
 import { ALGORITM_TYPES, Grid_Types, Tiletype } from "./types";
 
 export const runPathfindingAlgorithm = ({

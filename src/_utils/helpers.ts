@@ -1,7 +1,7 @@
 import { MAX_COLS, MAX_ROWS } from "./constants";
 import { Grid_Types, Tiletype } from "./types";
 
-const createRow=(row:Number,starttile:Tiletype,endtile:Tiletype)=>{
+const createRow=(row:number,starttile:Tiletype,endtile:Tiletype)=>{
 const currentrow=[]
 for(let col=0;col<MAX_COLS;col++){
 currentrow.push({

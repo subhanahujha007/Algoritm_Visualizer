@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { PathFindingProvider } from "@/_context/Path_Finding_Context";
 import { TileProvider } from "@/_context/Tile_Context";
+import { SpeedProvider } from "@/_context/Speed_Context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +33,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PathFindingProvider>
-          <TileProvider>{children}</TileProvider>
+          <TileProvider>
+            <SpeedProvider>
+            {children}
+            </SpeedProvider>
+            </TileProvider>
         </PathFindingProvider>
       </body>
     </html>

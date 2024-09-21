@@ -36,15 +36,14 @@ export async function constructBorder(
         grid[row][col].isWall = true;
         const tileElement = document.getElementById(`${row}-${col}`);
         if (tileElement) {
-          tileElement.classList.add(
-            ...WALL_TILE_STYLE.split(" "),
-            "animate-wall"
-          );
+          const wallClassList = WALL_TILE_STYLE.split(" ").filter(Boolean); // Remove empty class names
+          tileElement.classList.add(...wallClassList, "animate-wall");
         }
         await sleep(SLEEP_TIME);
       }
     }
 
+    // Adjust row and col if out of bounds
     if (row < 0) row = 0;
     if (row >= MAX_ROWS) row = MAX_ROWS - 1;
     if (col < 0) col = 0;
