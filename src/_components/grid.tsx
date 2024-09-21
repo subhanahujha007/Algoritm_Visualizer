@@ -1,33 +1,78 @@
 "use client"
-import { usePathFinding } from '@/_hooks/Path_Finding_hooks';
-import { MAX_ROWS } from '@/_utils/constants';
-import cx from 'clsx';
-import React from 'react';
+import { twMerge } from "tailwind-merge";
+import { usePathFinding } from "../_hooks/Path_Finding_hooks";
+import { MAX_COLS, MAX_ROWS } from "../_utils/constants";
+import { Tile } from "./tile";
+import { MutableRefObject, useState } from "react";
+import { checkIfStartOrEnd, createNewGrid } from "@/_utils/helpers";
 
+export function Grid({isvisualizedref}:{isvisualizedref:MutableRefObject<boolean>}) {
+  const { grid, setgrid } = usePathFinding();
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
-export const Grid = () => {
-  const {grid}= usePathFinding();
+  const handleMouseDown = (row: number, col: number) => {
+    if (isvisualizedref.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    setIsMouseDown(true);
+    const newGrid = createNewGrid(grid, row, col);
+    setgrid(newGrid);
+  };
+
+  const handleMouseUp = (row: number, col: number) => {
+    if (isvisualizedref.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    setIsMouseDown(false);
+  };
+
+  const handleMouseEnter = (row: number, col: number) => {
+    if (isvisualizedref.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    if (isMouseDown) {
+      const newGrid = createNewGrid(grid, row, col);
+      setgrid(newGrid);
+    }
+  };
   return (
     <div
-      className={`
-        
-          flex items-center flex-col justify-center border-2 border-black 
-        
-        lg:min-h-[${MAX_ROWS * 17}px]
-        
-         lg:min-w-[${MAX_ROWS * 15}px]
-       
-        
-      `}
+      className={twMerge(
+        "flex items-center flex-col justify-center border-black border-2 mt-10",
+        `lg:min-h-[${MAX_ROWS * 17}px]  md:min-h-[${
+          MAX_ROWS * 15
+        }px] xs:min-h-[${MAX_ROWS * 8}px] min-h-[${MAX_ROWS * 7}px]`,
+        `lg:w-[${MAX_COLS * 17}px] md:w-[${MAX_COLS * 15}px] xs:w-[${
+          MAX_COLS * 8
+        }px] w-[${MAX_COLS * 7}px]`
+      )}
     >
-        hi there 
-      {grid.map((row, rowIndex) => (
+      {grid.map((r, rowIndex) => (
         <div key={rowIndex} className="flex">
-          {row.map((tile, tileIndex) => (
-            <div key={tileIndex} className='h-2 w-2 bg-white border' />
-          ))}
+          {r.map((tile, tileIndex) => {
+            const { row, col, isEnd, isStart, isPath, isTraversed, isWall } =
+              tile;
+            return (
+              <Tile
+                key={tileIndex}
+                row={tile.row}
+                col={tile.col}
+                isEnd={isEnd}
+                isStart={isStart}
+                isPath={isPath}
+                isTraversed={isTraversed}
+                isWall={isWall}
+                handleMouseDown={() => handleMouseDown(row as number, col as number)}
+                handleMouseUp={() => handleMouseUp(row as number, col as number)}
+                handleMouseEnter={() => handleMouseEnter(row as number, col as number)}
+              />
+            );
+          })}
         </div>
       ))}
     </div>
   );
-};
+}
