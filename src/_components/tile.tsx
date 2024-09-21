@@ -44,8 +44,6 @@ export function Tile({
     backgroundColor = "white"; // TILE_STYLE color
   }
 
-  const borderBottom = row === MAX_ROWS - 1 ? "1px solid black" : "none";
-  const borderLeft = col === 0 ? "1px solid black" : "none";
 
   return (
     <div

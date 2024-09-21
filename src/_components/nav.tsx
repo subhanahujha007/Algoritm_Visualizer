@@ -98,7 +98,7 @@ export function Nav({
             value={maze}
             options={MAZES}
             isDisabled={isDisabled}
-            onChange={(e: any) => {
+            onChange={(e) => {
               handleGenerateMaze(e.target.value as MAZE_TYPE);
             }}
           />
@@ -107,7 +107,7 @@ export function Nav({
             value={algorithm}
             isDisabled={isDisabled}
             options={PATHFINDING_ALGORITHMS}
-            onChange={(e: any) => {
+            onChange={(e) => {
               setalgoritm(e.target.value as ALGORITM_TYPES);
             }}
           />

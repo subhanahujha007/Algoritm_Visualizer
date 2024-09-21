@@ -12,7 +12,7 @@ interface PathFindindContextType {
     setmaze:(maze:MAZE_TYPE)=>void
     grid:Grid_Types 
     setgrid:(grid:Grid_Types)=>void
-    isgraphvisiualized:Boolean
+    isgraphvisiualized:boolean
     setisgraphvisiualized:(isgraphvisiualized:boolean)=>void
 }
 export const PathFindindContext=createContext<PathFindindContextType | undefined>(undefined) 
