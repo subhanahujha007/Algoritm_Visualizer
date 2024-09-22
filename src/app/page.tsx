@@ -16,11 +16,12 @@ export default function Home() {
 <h1 className="font-bold ml-3">Path Finding Algorithm</h1>
 <p className="tracking-wider">visual demonstartion of varoius path finding algoritms with beautiful animations  A-Star BFS DFS DIJKSTRA </p>
 </div></Link>
+<Link href="/sorting">
 <div className="bg-yellow-400 flex px-3 flex-col justify-center items-center h-[280px] ml-32 rounded-lg rotate-37 w-[200px]">
 <h1 className="font-bold">Sorting Algorithm</h1>
 <p>visual demonstartion of varoius path Sorting algoritms with beautiful animations </p>
-<p className="font-bold">work in progress</p>
-</div>
+<p className="font-bold">Merge Insertion Selection Bubble</p>
+</div></Link>
 <div className="flex flex-row justify-around max-w-[200px] gap-2 mr-[500px] ">
 <Link href="https://github.com/subhanahujha007" ><FaGithub size={40}/>
 </Link>
