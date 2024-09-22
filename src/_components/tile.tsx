@@ -45,8 +45,8 @@ export function Tile({
   return (
     <div
       style={{
-        minWidth: "15px",
-        minHeight: "15px",
+        minWidth: "14px",
+        minHeight: "14px",
         border:"1px solid black",
         backgroundColor,
       }}
